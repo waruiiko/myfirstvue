@@ -1,6 +1,8 @@
 // const getName = (name:String)=>{
 //     return `hello! ${name}!`
 // }
-// console.log(getName('xiaoming'))
-var isDone = false;
-console.log(isDone);
+var person = {
+    id: 12,
+    name: 'xiaoming',
+    age: 30
+};
