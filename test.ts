@@ -61,19 +61,49 @@
 // 继承（Inheritance）：子类继承父类，子类除了拥有父类的所有特性外，还有一些更具体的特性。
 // 多态（Polymorphism）：由继承而产生了相关的不同的类，对同一个方法可以有不同的响应。
 
-class Animal {
-    name: string;
-    //构造函数：实例化时进行的逻辑
-    constructor(sname: string) {
-      this.name = sname
-    }
-    run() {
-      return `${this.name} is running`
-    }
-    eat() {
-        return `${this.name} is eating` 
-    }
-  }
-  const snake = new Animal('lily')
-  console.log(snake.run())
-  console.log(snake.eat())
+// class Animal {
+//     name: string;
+//     //构造函数：实例化时进行的逻辑
+//     constructor(sname: string) {
+//       this.name = sname
+//     }
+//     run() {
+//       return `${this.name} is running`
+//     }
+//     eat() {
+//         return `${this.name} is eating` 
+//     }
+//   }
+//   const snake = new Animal('lily')
+//   console.log(snake.run())
+//   console.log(snake.eat())
+
+//   // 继承的特性
+// class Dog extends Animal {
+//   bark() {
+//     return `${this.name} is barking`
+//   }
+// }
+
+// const xiaobao = new Dog('xiaobao')
+// console.log(xiaobao.run())
+// console.log(xiaobao.bark())
+
+// // 这里我们重写构造函数，注意在子类的构造函数中，必须使用 super 调用父类的方法，要不就会报错。
+// class Cat extends Animal {
+//   constructor(Dname: string) {
+//     super(Dname)
+//     console.log(this.name)
+//   }
+//   run() {
+//     return 'Meow, ' + super.run()
+//   }
+// }
+// const maomao = new Cat('maomao')
+// console.log(maomao.run())
+
+// 类成员的访问修饰符
+
+// public 修饰的属性或方法是公有的，可以在任何地方被访问到，默认所有的属性和方法都是 public 的
+// private 修饰的属性或方法是私有的，不能在声明它的类的外部访问
+// protected 修饰的属性或方法是受保护的，它和 private 类似，区别是它在子类中也是允许被访问的
