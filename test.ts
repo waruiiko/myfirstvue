@@ -145,7 +145,7 @@
 // }
 
 // 2 11 枚举（Enum）
-const enum Direction {
+const enum Direction {  //加const
     up='up',
     down='down',
     left='left',
