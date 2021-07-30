@@ -107,3 +107,52 @@
 // public 修饰的属性或方法是公有的，可以在任何地方被访问到，默认所有的属性和方法都是 public 的
 // private 修饰的属性或方法是私有的，不能在声明它的类的外部访问
 // protected 修饰的属性或方法是受保护的，它和 private 类似，区别是它在子类中也是允许被访问的
+
+// // 2 10 类和接口 完美搭档
+
+
+// //1.车，收音机
+// //4.implements Iradio
+// class car implements Iradio{
+//     switchRadio(triggered: boolean){
+
+//     }
+// }
+// //2.手机，收音机
+// //5.implements Iradio
+// class cellPhone implements IradioWithBattery{
+//     switchRadio(triggered: boolean){
+
+//     }
+//     checkBarreryStatus(){
+
+//     }
+// }
+// //3.创建接口，车和手机共有
+// interface Iradio{
+//     switchRadio(triggered: boolean):void;
+// }
+
+// // 6.创建接口，只有手机有
+// interface Ibattery{
+//     checkBarreryStatus():void
+// }
+
+// //7.接口可以继承 extends
+// //这样，子接口就继承了父接口的switchRadio，再加入checkBarreryStatus()
+// interface IradioWithBattery extends Iradio{
+//     checkBarreryStatus():void
+// }
+
+// 2 11 枚举（Enum）
+const enum Direction {
+    up='up',
+    down='down',
+    left='left',
+    right='right'
+}
+// console.log(Direction.down)
+const s = 'up';
+if (s === Direction.up){
+    console.log('go up!')
+}
