@@ -199,30 +199,54 @@
 //   const result4 = echoWithLength([1, 2, 3])
 
 
-// 2 14 泛型第三部分 泛型在类和接口中的使用
-class Queue<T>{
-    private data = [];
-    push(item:T){
-        return this.data.push(item);
-    }
-    pop():T{
-        return this.data.shift();
-    }
-}
-const queue = new Queue<number>();
-queue.push(123)
-console.log(queue.pop().toFixed())
+// // 2 14 泛型第三部分 泛型在类和接口中的使用
+// class Queue<T>{
+//     private data = [];
+//     push(item:T){
+//         return this.data.push(item);
+//     }
+//     pop():T{
+//         return this.data.shift();
+//     }
+// }
+// const queue = new Queue<number>();
+// queue.push(123)
+// console.log(queue.pop().toFixed())
 
 
-//泛型和 interface
-interface KeyPair<T, U> {
-    key: T;
-    value: U;
-  }
+// //泛型和 interface
+// interface KeyPair<T, U> {
+//     key: T;
+//     value: U;
+//   }
   
-  let kp1: KeyPair<number, string> = { key: 1, value: "str"}
-  let kp2: KeyPair<string, number> = { key: "str", value: 123}
-  var arr:number[] = [1, 2, 3, 4];
-  var arrTwo:Array<number> = [1, 2, 3, 5];  //number为Array内置的interface
-  console.log(arr)
-  console.log(arrTwo)
+//   let kp1: KeyPair<number, string> = { key: 1, value: "str"}
+//   let kp2: KeyPair<string, number> = { key: "str", value: 123}
+//   var arr:number[] = [1, 2, 3, 4];
+//   var arrTwo:Array<number> = [1, 2, 3, 5];  //number为Array内置的interface
+//   console.log(arr)
+//   console.log(arrTwo)
+
+// // 2 15 type-alias类型别名，字面量 和 交叉类型
+// let sum:(x:number,y:number)=>number
+// const result = sum(1,2)
+// type PlusType =(x:number,y:number)=>number
+// let sum2 : PlusType
+// const result2 = sum2(2,3)
+
+// type StrOrNumber = string | number
+// let result3 : StrOrNumber = '3'
+// result3 = 3
+
+// // 字符串字面量
+// type Directions = 'Up' | 'Down' | 'Left' | 'Right'
+// let toWhere: Directions = 'Right'
+
+// interface IName  {
+//     name: string
+//   }
+//   type IPerson = IName & { age: number }
+//   let person: IPerson = { name: 'hello', age: 12}
+
+// 2 16 声明文件
+// 2 17 内置类型
