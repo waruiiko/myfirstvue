@@ -250,3 +250,20 @@
 
 // 2 16 声明文件
 // 2 17 内置类型
+
+
+// partial，它可以把传入的类型都变成可选
+interface IPerson {
+    name: string
+    age: number
+  }
+  
+  let viking: IPerson = { name: 'viking', age: 20 }
+  type IPartial = Partial<IPerson>
+  let viking2: IPartial = { }
+  
+  // Omit，它返回的类型可以忽略传入类型的某个属性
+  
+  type IOmit = Omit<IPerson, 'name'>
+  let viking3: IOmit = { age: 20 }
+  
