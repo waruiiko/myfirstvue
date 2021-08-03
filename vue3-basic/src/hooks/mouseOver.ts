@@ -6,6 +6,11 @@ function myMouseOver() {
     m.value = e.pageX;
     n.value = e.pageY;
   };
+
+  // const becomeOrange = (e:MouseEvent)=>{
+    
+  // }
+
   onMounted(() => {
     document.addEventListener("mouseover", updateMouse);
   });

@@ -7,6 +7,7 @@
     <button @click="updateGreeting">+!</button>
     <h2>x:{{ x }},y:{{ y }}</h2>
     <h2>a:{{ a }},b:{{ b }}</h2>
+    <h2>m:{{ m }},n:{{ n }}</h2>
     <!-- <ul>
       <li v-for="number in numbers" :key="number">{{number}}</li>
     </ul>
@@ -17,6 +18,7 @@
 <script lang="ts">
 import useMousePosition from "../hooks/useMousePosition";
 import clickMouse from "../hooks/clickMouse";
+import myMouseOver from "../hooks/mouseOver";
 import {
   ref,
   computed,
@@ -82,6 +84,7 @@ export default {
     //获取坐标
     const { x, y } = useMousePosition();
     const { a, b } = clickMouse();
+    const { m, n } = myMouseOver();
     //watch
     //第一个参数为响应式对象greetings，参数可以是数组
     //第二个参数为改变对象的函数体
@@ -100,6 +103,8 @@ export default {
       y,
       a,
       b,
+      m,
+      n
     };
 
     // const data: DataProps = reactive({
