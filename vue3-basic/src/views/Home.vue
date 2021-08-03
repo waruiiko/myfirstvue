@@ -75,7 +75,7 @@ export default {
     };
 
     //watch
-    //第一个参数为响应式对象greetings
+    //第一个参数为响应式对象greetings，参数可以是数组
     //第二个参数为改变对象的函数体
     watch([greetings,()=>data.count], (newValue, oldValue) => {
       console.log("old", oldValue);
