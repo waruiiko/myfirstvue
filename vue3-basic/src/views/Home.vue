@@ -5,7 +5,8 @@
     <button @click="increase">+1</button>
     <h2>{{ greetings }}</h2>
     <button @click="updateGreeting">+!</button>
-    <h2>x:{{x}},y:{{y}}</h2>
+    <h2>x:{{ x }},y:{{ y }}</h2>
+    <h2>a:{{ a }},b:{{ b }}</h2>
     <!-- <ul>
       <li v-for="number in numbers" :key="number">{{number}}</li>
     </ul>
@@ -14,6 +15,8 @@
 </template>
 
 <script lang="ts">
+import useMousePosition from "../hooks/useMousePosition";
+import clickMouse from "../hooks/clickMouse";
 import {
   ref,
   computed,
@@ -23,7 +26,7 @@ import {
   onUpdated,
   onRenderTriggered,
   watch,
-  onUnmounted
+  onUnmounted,
 } from "vue";
 
 export default {
@@ -77,22 +80,12 @@ export default {
     };
 
     //获取坐标
-    const x =ref(0);
-    const y =ref(0);
-    const updateMouse = (e:MouseEvent) => {
-      x.value = e.pageX;
-      y.value = e.pageY;
-    }
-    onMounted(()=>{
-      document.addEventListener('click',updateMouse);
-    })
-    onUnmounted(()=>{
-      document.removeEventListener('click',updateMouse);
-    })
+    const { x, y } = useMousePosition();
+    const { a, b } = clickMouse();
     //watch
     //第一个参数为响应式对象greetings，参数可以是数组
     //第二个参数为改变对象的函数体
-    watch([greetings,()=>data.count], (newValue, oldValue) => {
+    watch([greetings, () => data.count], (newValue, oldValue) => {
       console.log("old", oldValue);
       console.log("new", newValue);
       document.title = "updated " + greetings.value + " " + data.count;
@@ -104,7 +97,9 @@ export default {
       greetings,
       updateGreeting,
       x,
-      y
+      y,
+      a,
+      b,
     };
 
     // const data: DataProps = reactive({
