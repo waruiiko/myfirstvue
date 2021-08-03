@@ -5,6 +5,7 @@
     <button @click="increase">+1</button>
     <h2>{{ greetings }}</h2>
     <button @click="updateGreeting">+!</button>
+    <h2>x:{{x}},y:{{y}}</h2>
     <!-- <ul>
       <li v-for="number in numbers" :key="number">{{number}}</li>
     </ul>
@@ -22,6 +23,7 @@ import {
   onUpdated,
   onRenderTriggered,
   watch,
+  onUnmounted
 } from "vue";
 
 export default {
@@ -74,6 +76,19 @@ export default {
       greetings.value += "hello!";
     };
 
+    //获取坐标
+    const x =ref(0);
+    const y =ref(0);
+    const updateMouse = (e:MouseEvent) => {
+      x.value = e.pageX;
+      y.value = e.pageY;
+    }
+    onMounted(()=>{
+      document.addEventListener('click',updateMouse);
+    })
+    onUnmounted(()=>{
+      document.removeEventListener('click',updateMouse);
+    })
     //watch
     //第一个参数为响应式对象greetings，参数可以是数组
     //第二个参数为改变对象的函数体
@@ -88,6 +103,8 @@ export default {
       ...refData,
       greetings,
       updateGreeting,
+      x,
+      y
     };
 
     // const data: DataProps = reactive({
