@@ -9,6 +9,9 @@
     <h2>a:{{ refState.a.value }},b:{{ refState.b.value }}</h2>
     <h2>m:{{ m }},n:{{ n }}</h2>
     <button @click="nicee">++!</button>
+    <br>
+    <h1 v-if="loading">Loading...</h1>
+    <img v-if="loaded" :src="result.message" />
     <!-- <ul>
       <li v-for="number in numbers" :key="number">{{number}}</li>
     </ul>
@@ -20,6 +23,7 @@
 import useMousePosition from "../hooks/useMousePosition";
 import clickMouse from "../hooks/clickMouse";
 import myMouseOver from "../hooks/mouseOver";
+import useURLLoader from "../hooks/useURLLoader";
 import {
   ref,
   computed,
@@ -87,9 +91,15 @@ export default {
     const { refState } = clickMouse();
     const { m, n } = myMouseOver();
     const nicee = () => {
-      console.log(refState.a.value)
+      console.log(refState.a.value);
       // console.log('nice');
-    }
+    };
+
+    //dog pics from 'https://dog.ceo/dog-api/'
+    const { result, loading, loaded } = useURLLoader(
+      "https://dog.ceo/api/breeds/image/random"
+    );
+
     //watch
     //第一个参数为响应式对象greetings，参数可以是数组
     //第二个参数为改变对象的函数体
@@ -106,10 +116,13 @@ export default {
       updateGreeting,
       x,
       y,
-refState,
+      refState,
       m,
       n,
-      nicee
+      nicee,
+      result,
+      loading,
+      loaded,
     };
 
     // const data: DataProps = reactive({
