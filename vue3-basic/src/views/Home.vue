@@ -6,8 +6,9 @@
     <h2>{{ greetings }}</h2>
     <button @click="updateGreeting">+!</button>
     <h2>x:{{ x }},y:{{ y }}</h2>
-    <h2>a:{{ a }},b:{{ b }}</h2>
+    <h2>a:{{ refState.a.value }},b:{{ refState.b.value }}</h2>
     <h2>m:{{ m }},n:{{ n }}</h2>
+    <button @click="nicee">++!</button>
     <!-- <ul>
       <li v-for="number in numbers" :key="number">{{number}}</li>
     </ul>
@@ -55,19 +56,19 @@ export default {
       // numbers: number[];
       // person: {name?:string};
     }
-    //生命周期钩子函数
-    onMounted(() => {
-      console.log("onMounted");
-    });
-    onUpdated(() => {
-      console.log("onUpdated");
-    });
+    // //生命周期钩子函数
+    // onMounted(() => {
+    //   console.log("onMounted");
+    // });
+    // onUpdated(() => {
+    //   console.log("onUpdated");
+    // });
 
-    //onRenderTriggered()接收参数用于调试
-    onRenderTriggered((event) => {
-      // console.log("onRenderTriggered")
-      console.log(event);
-    });
+    // //onRenderTriggered()接收参数用于调试
+    // onRenderTriggered((event) => {
+    //   // console.log("onRenderTriggered")
+    //   console.log(event);
+    // });
 
     const data: DataProps = reactive({
       count: 0,
@@ -83,8 +84,12 @@ export default {
 
     //获取坐标
     const { x, y } = useMousePosition();
-    const { a, b } = clickMouse();
+    const { refState } = clickMouse();
     const { m, n } = myMouseOver();
+    const nicee = () => {
+      console.log(refState.a.value)
+      // console.log('nice');
+    }
     //watch
     //第一个参数为响应式对象greetings，参数可以是数组
     //第二个参数为改变对象的函数体
@@ -101,10 +106,10 @@ export default {
       updateGreeting,
       x,
       y,
-      a,
-      b,
+refState,
       m,
-      n
+      n,
+      nicee
     };
 
     // const data: DataProps = reactive({
