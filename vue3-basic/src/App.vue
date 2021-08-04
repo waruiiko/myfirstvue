@@ -3,8 +3,18 @@
     <router-link to="/">Home</router-link> |
     <router-link to="/about">About</router-link>
   <router-view/>
+  <HelloWorld/>
+  <modal/>
   </div>
 </template>
+
+<script>
+import modal from './components/Modal.vue'
+import HelloWorld from './components/HelloWorld.vue'
+export default {
+  components:{modal,HelloWorld}
+}
+</script>
 
 <style>
 #app {

@@ -40,6 +40,16 @@ export default defineComponent({
   props: {
     msg: String,
   },
+  setup(props, context) {
+    // Attribute (非响应式对象)
+    console.log(context.attrs)
+
+    // 插槽 (非响应式对象)
+    console.log(context.slots)
+
+    // 触发事件 (方法)
+    console.log(context.emit)
+  }
 });
 </script>
 
