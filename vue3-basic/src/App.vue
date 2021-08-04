@@ -4,16 +4,33 @@
     <router-link to="/about">About</router-link>
   <router-view/>
   <HelloWorld/>
-  <modal/>
+  <button @click="openModal">modal</button>
+  <modal :isOpen="modalIsOpen" @close-modal="onModalClose">MyModal!</modal>
   </div>
 </template>
 
 <script>
 import modal from './components/Modal.vue'
 import HelloWorld from './components/HelloWorld.vue'
-export default {
-  components:{modal,HelloWorld}
-}
+import {defineComponent,ref} from 'vue'
+export default defineComponent({
+  components:{modal,HelloWorld},
+
+  setup(){
+    const modalIsOpen = ref(false)
+    const openModal =()=>{
+      modalIsOpen.value = true
+    }
+    const onModalClose =()=>{
+      modalIsOpen.value = false
+    }
+    return {
+      modalIsOpen,
+      openModal,
+      onModalClose
+    }
+  }
+})
 </script>
 
 <style>
