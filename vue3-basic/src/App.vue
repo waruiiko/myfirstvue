@@ -6,15 +6,24 @@
   <HelloWorld/>
   <button @click="openModal">modal</button>
   <modal :isOpen="modalIsOpen" @close-modal="onModalClose">MyModal!</modal>
+  <Suspense>
+    <template #default>
+      <async-show/>
+    </template>
+    <template #fallback>
+      Loading...
+    </template>
+  </Suspense>
   </div>
 </template>
 
 <script>
 import modal from './components/Modal.vue'
 import HelloWorld from './components/HelloWorld.vue'
+import asyncShow from './components/AsyncShow.vue'
 import {defineComponent,ref} from 'vue'
 export default defineComponent({
-  components:{modal,HelloWorld},
+  components:{modal,HelloWorld,asyncShow},
 
   setup(){
     const modalIsOpen = ref(false)
